@@ -3,7 +3,7 @@ BUG-001,"Cart quantity field accepts negative or zero values on manual input, re
 2. Open the cart drawer.
 3. Click directly inside the quantity input field for the product.
 4. Type '-2' and press Tab or click outside the input.
-5. Observe the item subtotal and overall Order Total.","The application should reject negative and zero quantities, display an input validation alert or automatically reset/clamp the quantity to minimum 1.","The quantity accepts -2, resulting in a subtotal of -$399.98 and a negative Order Total.",High,High,"Windows 11, Google Chrome 157.0 (64-bit), Screen 1920x1080",Open,screenshots/bug-001-negative-cart-quantity.png
+5. Observe the item subtotal and overall Order Total.","The application should reject negative and zero quantities, display an input validation alert or automatically reset/clamp the quantity to minimum 1.","The quantity accepts -2, resulting in a subtotal of -₹9,998.00 and a negative Order Total.",High,High,"Windows 11, Google Chrome 157.0 (64-bit), Screen 1920x1080",Open,screenshots/bug-001-negative-cart-quantity.png
 BUG-002,Checkout form accepts non-numeric alphabetic characters in ZIP/Postal Code field,Checkout Form,The ZIP/Postal Code input on the checkout modal does not enforce a numeric or valid postal code format. Submitting arbitrary alphabetic strings such as 'ABCDE' bypasses validation and proceeds with order placement.,Cart has items and checkout modal is open.,"1. Proceed to checkout with valid items.
 2. Fill Name, Email, Street Address, City, and State with valid data.
 3. Enter 'ABCDE' in the 'ZIP / Postal Code' field.

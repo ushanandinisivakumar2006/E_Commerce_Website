@@ -676,3 +676,4 @@ for fname, content in SVGS.items():
     print(f"Created: {fpath}")
 
 print("All 12 product illustrations successfully generated!")
+

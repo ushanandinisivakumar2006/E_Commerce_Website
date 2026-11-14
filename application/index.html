@@ -114,20 +114,20 @@
       <div class="filter-group">
         <div class="price-header">
           <label class="filter-title">Max Price</label>
-          <span id="price-display" data-testid="price-display">$1500</span>
+          <span id="price-display" data-testid="price-display">₹1,00,000</span>
         </div>
         <input 
           type="range" 
           id="price-range" 
           data-testid="price-range" 
-          min="10" 
-          max="1500" 
-          step="10" 
-          value="1500"
+          min="500" 
+          max="100000" 
+          step="500" 
+          value="100000"
         >
         <div class="price-range-limits">
-          <span>$10</span>
-          <span>$1500</span>
+          <span>₹500</span>
+          <span>₹1,00,000</span>
         </div>
       </div>
 
@@ -196,15 +196,15 @@
       <div class="cart-footer" id="cart-footer">
         <div class="cart-summary-line">
           <span>Subtotal:</span>
-          <span id="cart-subtotal" data-testid="cart-subtotal">$0.00</span>
+          <span id="cart-subtotal" data-testid="cart-subtotal">₹0</span>
         </div>
         <div class="cart-summary-line">
-          <span>Estimated Tax (8%):</span>
-          <span id="cart-tax" data-testid="cart-tax">$0.00</span>
+          <span>Estimated GST (18%):</span>
+          <span id="cart-tax" data-testid="cart-tax">₹0</span>
         </div>
         <div class="cart-summary-line total-line">
           <span>Order Total:</span>
-          <span id="cart-total" data-testid="cart-total">$0.00</span>
+          <span id="cart-total" data-testid="cart-total">₹0</span>
         </div>
         <div class="cart-actions">
           <button id="clear-cart-btn" data-testid="clear-cart-btn" class="btn btn-outline btn-block">Clear Cart</button>
@@ -421,7 +421,7 @@
         <div class="checkout-summary-box">
           <div class="checkout-line">
             <span>Total Payable:</span>
-            <strong id="chk-total-payable" data-testid="chk-total-payable">$0.00</strong>
+            <strong id="chk-total-payable" data-testid="chk-total-payable">₹0</strong>
           </div>
         </div>
 
@@ -471,7 +471,7 @@
           </div>
           <div class="conf-total-row">
             <span>Total Amount Paid:</span>
-            <strong id="conf-total" data-testid="conf-total">$0.00</strong>
+            <strong id="conf-total" data-testid="conf-total">₹0</strong>
           </div>
         </div>
       </div>

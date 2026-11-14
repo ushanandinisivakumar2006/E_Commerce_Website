@@ -8,12 +8,18 @@ function createProductSVG(bg, icon, text) {
   return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="100%" height="100%" fill="${bg}"/><text x="50%" y="45%" font-size="64" text-anchor="middle" dominant-baseline="middle">${icon}</text><text x="50%" y="75%" font-family="sans-serif" font-size="16" font-weight="bold" fill="%231e293b" text-anchor="middle">${encodeURIComponent(text)}</text></svg>`;
 }
 
+// --- Currency Formatter (Indian Rupees) ---
+function formatINR(val) {
+  const num = parseFloat(val) || 0;
+  return "₹" + num.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
 const PRODUCTS_DATA = [
   {
     id: 1,
     title: "Quantum Pro Wireless Headphones",
     category: "Electronics",
-    price: 199.99,
+    price: 4999.00,
     rating: 4.8,
     reviews: 142,
     stock: 25,
@@ -24,7 +30,7 @@ const PRODUCTS_DATA = [
     id: 2,
     title: "UltraBook Pro 15.6-inch Laptop",
     category: "Electronics",
-    price: 1099.99,
+    price: 79999.00,
     rating: 4.9,
     reviews: 89,
     stock: 12,
@@ -35,7 +41,7 @@ const PRODUCTS_DATA = [
     id: 3,
     title: "SmartFit Fitness Smartwatch",
     category: "Electronics",
-    price: 149.50,
+    price: 3499.00,
     rating: 4.4,
     reviews: 215,
     stock: 30,
@@ -46,7 +52,7 @@ const PRODUCTS_DATA = [
     id: 4,
     title: "4K Action Sports Camera",
     category: "Electronics",
-    price: 249.00,
+    price: 12999.00,
     rating: 4.6,
     reviews: 78,
     stock: 18,
@@ -57,7 +63,7 @@ const PRODUCTS_DATA = [
     id: 5,
     title: "Classic Cotton Crewneck T-Shirt",
     category: "Apparel",
-    price: 24.99,
+    price: 699.00,
     rating: 4.3,
     reviews: 310,
     stock: 80,
@@ -68,7 +74,7 @@ const PRODUCTS_DATA = [
     id: 6,
     title: "Slim-Fit Stretch Denim Jeans",
     category: "Apparel",
-    price: 59.95,
+    price: 1899.00,
     rating: 4.5,
     reviews: 164,
     stock: 45,
@@ -79,7 +85,7 @@ const PRODUCTS_DATA = [
     id: 7,
     title: "All-Weather Polar Fleece Jacket",
     category: "Apparel",
-    price: 89.99,
+    price: 2799.00,
     rating: 4.7,
     reviews: 95,
     stock: 22,
@@ -90,7 +96,7 @@ const PRODUCTS_DATA = [
     id: 8,
     title: "Clean Code & Software Architecture",
     category: "Books",
-    price: 39.99,
+    price: 999.00,
     rating: 4.9,
     reviews: 520,
     stock: 50,
@@ -101,7 +107,7 @@ const PRODUCTS_DATA = [
     id: 9,
     title: "Hands-On Test Automation with Selenium",
     category: "Books",
-    price: 44.50,
+    price: 1299.00,
     rating: 4.8,
     reviews: 180,
     stock: 35,
@@ -112,7 +118,7 @@ const PRODUCTS_DATA = [
     id: 10,
     title: "Precision Espresso Coffee Machine",
     category: "Home & Kitchen",
-    price: 299.99,
+    price: 18999.00,
     rating: 4.7,
     reviews: 112,
     stock: 14,
@@ -123,7 +129,7 @@ const PRODUCTS_DATA = [
     id: 11,
     title: "Smart Air Purifier with HEPA Filter",
     category: "Home & Kitchen",
-    price: 129.99,
+    price: 8999.00,
     rating: 4.5,
     reviews: 84,
     stock: 20,
@@ -134,7 +140,7 @@ const PRODUCTS_DATA = [
     id: 12,
     title: "Cast Iron Dutch Oven 6-Quart",
     category: "Home & Kitchen",
-    price: 69.95,
+    price: 3499.00,
     rating: 4.8,
     reviews: 204,
     stock: 28,
@@ -151,7 +157,7 @@ const AppState = {
   currentUser: null,
   activeFilter: {
     category: "all",
-    maxPrice: 1500,
+    maxPrice: 100000,
     searchQuery: "",
     sortBy: "featured"
   },
@@ -357,7 +363,7 @@ function renderProducts() {
           <span class="rating-count">(${product.reviews})</span>
         </div>
         <div class="product-footer">
-          <span class="product-price" data-testid="product-price-${product.id}">$${product.price.toFixed(2)}</span>
+          <span class="product-price" data-testid="product-price-${product.id}">${formatINR(product.price)}</span>
           <div class="card-actions">
             <button class="btn btn-outline btn-sm view-detail-btn" data-id="${product.id}" data-testid="view-detail-${product.id}">Details</button>
             <button class="btn btn-primary btn-sm add-cart-btn" data-id="${product.id}" data-testid="add-to-cart-${product.id}">Add to Cart</button>
@@ -409,15 +415,15 @@ function applyFilters() {
 function resetAllFilters() {
   AppState.activeFilter = {
     category: "all",
-    maxPrice: 1500,
+    maxPrice: 100000,
     searchQuery: "",
     sortBy: "featured"
   };
 
   DOM.searchInput.value = "";
   DOM.clearSearchBtn.style.display = "none";
-  DOM.priceRange.value = 1500;
-  DOM.priceDisplay.textContent = "$1500";
+  DOM.priceRange.value = 100000;
+  DOM.priceDisplay.textContent = "₹1,00,000";
   DOM.sortSelect.value = "featured";
 
   const allCatRadio = document.querySelector('input[name="category"][value="all"]');
@@ -442,7 +448,7 @@ function openProductDetail(productId) {
         <span>★ ${product.rating.toFixed(1)} rating</span>
         <span class="rating-count">(${product.reviews} customer reviews)</span>
       </div>
-      <div class="detail-price" data-testid="detail-price">$${product.price.toFixed(2)}</div>
+      <div class="detail-price" data-testid="detail-price">${formatINR(product.price)}</div>
       <p class="detail-desc" data-testid="detail-desc">${product.description}</p>
       <div class="detail-stock">✓ In Stock (${product.stock} units available)</div>
       <div class="detail-actions">
@@ -544,7 +550,7 @@ function getCartCalculations() {
     const q = parseInt(item.quantity) || 0;
     return sum + (item.price * q);
   }, 0);
-  const tax = subtotal * 0.08;
+  const tax = subtotal * 0.18;
   const total = subtotal + tax;
   return {
     subtotal: subtotal.toFixed(2),
@@ -557,10 +563,10 @@ function renderCart() {
   DOM.cartItemsContainer.innerHTML = "";
   const calcs = getCartCalculations();
 
-  DOM.cartSubtotal.textContent = `$${calcs.subtotal}`;
-  DOM.cartTax.textContent = `$${calcs.tax}`;
-  DOM.cartTotal.textContent = `$${calcs.total}`;
-  DOM.chkTotalPayable.textContent = `$${calcs.total}`;
+  DOM.cartSubtotal.textContent = formatINR(calcs.subtotal);
+  DOM.cartTax.textContent = formatINR(calcs.tax);
+  DOM.cartTotal.textContent = formatINR(calcs.total);
+  DOM.chkTotalPayable.textContent = formatINR(calcs.total);
 
   if (AppState.cart.length === 0) {
     DOM.cartItemsContainer.innerHTML = `
@@ -591,7 +597,7 @@ function renderCart() {
       </div>
       <div class="cart-item-info">
         <div class="cart-item-title" data-testid="cart-item-title-${item.productId}">${item.title}</div>
-        <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
+        <div class="cart-item-price">${formatINR(item.price)} each</div>
         <div class="cart-item-qty">
           <button class="qty-btn qty-minus" data-id="${item.productId}" data-testid="cart-qty-minus-${item.productId}">-</button>
           <input type="number" class="qty-input" data-id="${item.productId}" data-testid="cart-qty-input-${item.productId}" value="${item.quantity}">
@@ -599,7 +605,7 @@ function renderCart() {
         </div>
       </div>
       <div class="cart-item-total">
-        <span class="cart-item-subtotal" data-testid="cart-item-subtotal-${item.productId}">$${itemSubtotal}</span>
+        <span class="cart-item-subtotal" data-testid="cart-item-subtotal-${item.productId}">${formatINR(itemSubtotal)}</span>
         <button class="remove-item-btn" data-id="${item.productId}" data-testid="cart-remove-btn-${item.productId}">Remove</button>
       </div>
     `;
@@ -868,7 +874,7 @@ function processOrder() {
   DOM.confEmail.textContent = DOM.chkEmail.value.trim();
   DOM.confAddress.textContent = `${DOM.chkAddress.value.trim()}, ${DOM.chkCity.value.trim()}, ${DOM.chkState.value.trim()} ${DOM.chkZip.value.trim()}`;
   DOM.confPayment.textContent = selectedPayment;
-  DOM.confTotal.textContent = `$${calcs.total}`;
+  DOM.confTotal.textContent = formatINR(calcs.total);
 
   // Fill Confirmed Items
   DOM.confItemsList.innerHTML = "";
@@ -877,7 +883,7 @@ function processOrder() {
     row.className = "conf-item-row";
     row.innerHTML = `
       <span>${item.title} (x${item.quantity})</span>
-      <strong>$${(item.price * item.quantity).toFixed(2)}</strong>
+      <strong>${formatINR(item.price * item.quantity)}</strong>
     `;
     DOM.confItemsList.appendChild(row);
   });
@@ -935,7 +941,7 @@ function setupEventListeners() {
   // Price Slider
   DOM.priceRange.addEventListener("input", (e) => {
     const val = e.target.value;
-    DOM.priceDisplay.textContent = `$${val}`;
+    DOM.priceDisplay.textContent = "₹" + parseFloat(val).toLocaleString("en-IN");
     AppState.activeFilter.maxPrice = parseFloat(val);
     applyFilters();
   });
@@ -1006,7 +1012,7 @@ function setupEventListeners() {
     }
     DOM.cartDrawer.style.display = "none";
     const calcs = getCartCalculations();
-    DOM.chkTotalPayable.textContent = `$${calcs.total}`;
+    DOM.chkTotalPayable.textContent = formatINR(calcs.total);
 
     // Pre-fill user data if logged in
     if (AppState.currentUser) {

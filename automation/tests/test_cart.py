@@ -29,7 +29,7 @@ class TestCart:
         
         items_count = cart_page.get_cart_items_count()
         assert items_count == 1, f"Expected 1 item in cart drawer, got {items_count}"
-        assert "$199.99" in cart_page.get_subtotal()
+        assert "4,999.00" in cart_page.get_subtotal()
 
     def test_increment_quantity(self, driver):
         prod_page = ProductsPage(driver)
@@ -41,7 +41,7 @@ class TestCart:
         
         updated_badge = cart_page.get_badge_count()
         assert updated_badge == 2, f"Expected badge count 2 after increment, got {updated_badge}"
-        assert "$399.98" in cart_page.get_subtotal()
+        assert "9,998.00" in cart_page.get_subtotal()
 
     def test_remove_product_from_cart(self, driver):
         prod_page = ProductsPage(driver)

@@ -123,7 +123,7 @@ During manual and boundary-value test execution, **3 authentic defects** were di
   2. Open cart drawer and click into the quantity input box.
   3. Enter `-2` and click away (trigger blur event).
 - **Expected Result:** Application should reject negative or zero input, display validation error or clamp quantity to 1.
-- **Actual Result:** Quantity updates to `-2`, line-item subtotal becomes `-$399.98`, and overall order total is corrupted.
+- **Actual Result:** Quantity updates to `-2`, line-item subtotal becomes `-₹9,998.00`, and overall order total is corrupted.
 - **Evidence:** `screenshots/bug-001-negative-cart-quantity.png`
 
 #### Bug Report 2: BUG-002

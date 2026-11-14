@@ -95,10 +95,10 @@ application/
 | **2** | **Authentication & Session** | Secure login against mock database (`testuser@example.com` / `Password123!`), session persistence via `localStorage`, avatar rendering, and logout session teardown. |
 | **3** | **Product Catalog** | Dynamic rendering of 12 multi-category products with pricing, ratings, reviews, stock indicators, and high-contrast vector illustrations. |
 | **4** | **Product Search** | Real-time and button-triggered keyword search querying product titles, categories, and descriptions with empty state fallback. |
-| **5** | **Multi-Criteria Filtering** | Instant category radio filters (Electronics, Apparel, Books, Home & Kitchen) and dynamic price range slider thresholding ($10 to $1500). |
+| **5** | **Multi-Criteria Filtering** | Instant category radio filters (Electronics, Apparel, Books, Home & Kitchen) and dynamic price range slider thresholding (₹500 to ₹1,00,000). |
 | **6** | **Product Sorting** | Dropdown sorting by Featured, Price: Low-to-High, Price: High-to-Low, and Customer Rating. |
 | **7** | **Product Details Modal** | Detailed inspection view displaying high-res visual, comprehensive specs, stock status, and modal quantity stepper. |
-| **8** | **Shopping Cart Drawer** | Slide-out cart displaying line items, unit prices, dynamic quantities, and auto-calculated subtotal, 8% sales tax, and grand total. |
+| **8** | **Shopping Cart Drawer** | Slide-out cart displaying line items, unit prices, dynamic quantities, and auto-calculated subtotal, 18% GST, and grand total. |
 | **9** | **Cart Quantity Management** | Stepper buttons (`+` / `-`) for incremental updates, manual direct input editing, single item removal, and full cart clearing. |
 | **10** | **Checkout Shipping Form** | Shipping address fields (Full Name, Email, Street Address, City, State, ZIP/Postal Code). |
 | **11** | **Form & Payment Validation** | Real-time and submission checks enforcing required fields, regex email validation, and toggled mock payment options (Credit Card vs Cash on Delivery). |
@@ -124,7 +124,7 @@ mindmap
       Empty Form Submission
     Boundary Value Analysis
       Password Length Limit (5 vs 6 chars)
-      Price Slider Boundary ($10 - $1500)
+      Price Slider Boundary (₹500 - ₹1,00,000)
       Cart Quantity Boundary (0, -1, -2)
     Validation Testing
       Email Regex Formatting
@@ -172,9 +172,9 @@ Each test case adheres to standard QA industry columns:
 | **TC016** | Product Search | Verify search for existing product by keyword | Query: 'Laptop' | UltraBook Pro laptop displayed; count shows '1 of 12'. | **Pass** |
 | **TC019** | Product Search | Verify search query with untrimmed whitespace | Query: '  Camera  ' | Query trimmed; '4K Action Camera' displayed. | **Fail** (BUG-003) |
 | **TC021** | Product Filtering | Verify filtering by 'Electronics' category | Category: Electronics | Only 4 Electronics products rendered in grid. | **Pass** |
-| **TC023** | Product Filtering | Verify maximum price slider filter at $50 | Max Price: $50 | Only 3 items <= $50 displayed. | **Pass** |
+| **TC023** | Product Filtering | Verify maximum price slider filter at ₹2,000 | Max Price: ₹2,000 | Only 4 items <= ₹2,000 displayed. | **Pass** |
 | **TC028** | Shopping Cart | Verify adding product to cart from card | Product ID: 1 | Badge increments to 1; confirmation toast displayed. | **Pass** |
-| **TC031** | Shopping Cart | Verify incrementing quantity via '+' button | Increment from 1 to 2 | Quantity = 2; subtotal updates to $399.98. | **Pass** |
+| **TC031** | Shopping Cart | Verify incrementing quantity via '+' button | Increment from 1 to 2 | Quantity = 2; subtotal updates to ₹9,998.00. | **Pass** |
 | **TC033** | Shopping Cart | Verify manual input of negative quantity | Quantity: -2 | Rejects negative value; clamps or shows error. | **Fail** (BUG-001) |
 | **TC037** | Checkout | Verify checkout form validation when empty | Empty inputs | Error messages appear under all required fields. | **Pass** |
 | **TC039** | Checkout | Verify ZIP code validation with letters | ZIP: 'ABCDE' | Enforces numeric regex; rejects 'ABCDE'. | **Fail** (BUG-002) |
@@ -230,7 +230,7 @@ When test cases `TC019`, `TC033`, and `TC039` failed, formal defect reports were
   3. Click directly in the quantity input field, type `-2`, and trigger `blur` event.
   4. Observe line-item subtotal and Order Total.
 - **Expected:** Application rejects negative values and clamps quantity to minimum 1.
-- **Actual:** Accepts `-2`, calculating subtotal `-$399.98` and a negative grand total.
+- **Actual:** Accepts `-2`, calculating subtotal `-₹9,998.00` and a negative grand total.
 - **Evidence:** [`screenshots/bug-001-negative-cart-quantity.png`](screenshots/bug-001-negative-cart-quantity.png)
 
 #### Defect 2: BUG-002 (Medium Severity)
@@ -385,7 +385,7 @@ When interviewing for **Software Test Engineer**, **QA Analyst**, or **SDET** ro
 
 ### Q2: "Can you give an example of an interesting defect you uncovered during testing?"
 > **Answer:**  
-> "During Boundary Value Analysis of the shopping cart, I tested how the quantity field handled manual numeric entries versus the stepper buttons. While the `+` and `-` buttons properly constrained the value, directly typing `-2` or `0` into the input bypassed validation. The application accepted the negative integer, resulting in a negative line-item subtotal of `-$399.98` and corrupting the overall order total. I documented this as **BUG-001** with high severity, reproduction steps, and screenshot evidence."
+> "During Boundary Value Analysis of the shopping cart, I tested how the quantity field handled manual numeric entries versus the stepper buttons. While the `+` and `-` buttons properly constrained the value, directly typing `-2` or `0` into the input bypassed validation. The application accepted the negative integer, resulting in a negative line-item subtotal of `-₹9,998.00` and corrupting the overall order total. I documented this as **BUG-001** with high severity, reproduction steps, and screenshot evidence."
 
 ### Q3: "Why did you implement the Page Object Model (POM) for automation?"
 > **Answer:**  
