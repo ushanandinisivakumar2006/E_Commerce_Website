@@ -44,3 +44,4 @@ class TestProducts:
         assert "Quantum Pro" in title, f"Expected Quantum Pro details, got '{title}'"
         
         prod_page.close_detail_modal()
+

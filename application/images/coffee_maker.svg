@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="coffeeBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#ffedd5"/>
+    </radialGradient>
+    <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="40%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="machineShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="20" fill="url(#coffeeBg)"/>
+
+  <!-- Espresso Machine Body -->
+  <g filter="url(#machineShadow)">
+    <!-- Top Warming Tray -->
+    <rect x="110" y="80" width="180" height="15" rx="3" fill="url(#chromeGrad)"/>
+    <line x1="125" y1="88" x2="275" y2="88" stroke="#475569" stroke-dasharray="6 3" stroke-width="2"/>
+
+    <!-- Main Housing -->
+    <rect x="115" y="95" width="170" height="145" fill="url(#chromeGrad)" stroke="#475569" stroke-width="1.5"/>
+
+    <!-- Pressure Gauge Manometer -->
+    <circle cx="200" cy="140" r="22" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <circle cx="200" cy="140" r="18" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    <!-- Gauge Needle -->
+    <line x1="200" y1="140" x2="208" y2="128" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="200" cy="140" r="2" fill="#0f172a"/>
+    <text x="200" y="152" font-family="sans-serif" font-size="6" font-weight="bold" fill="#64748b" text-anchor="middle">15 BAR</text>
+
+    <!-- Chrome Toggle Switches -->
+    <rect x="140" y="132" width="16" height="16" rx="3" fill="#1e293b"/>
+    <circle cx="148" cy="140" r="3" fill="#22c55e"/>
+    
+    <rect x="244" y="132" width="16" height="16" rx="3" fill="#1e293b"/>
+    <circle cx="252" cy="140" r="3" fill="#eab308"/>
+
+    <!-- Group Head & Portafilter -->
+    <rect x="175" y="240" width="50" height="15" rx="2" fill="#1e293b"/>
+    <!-- Portafilter Spout -->
+    <path d="M 180 255 L 220 255 L 210 270 L 190 270 Z" fill="url(#chromeGrad)"/>
+    <!-- Handle -->
+    <rect x="220" y="245" width="60" height="12" rx="4" fill="#0f172a"/>
+
+    <!-- Espresso Cup with Crema -->
+    <path d="M 185 295 L 215 295 L 210 325 L 190 325 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <!-- Crema -->
+    <ellipse cx="200" cy="298" rx="12" ry="3" fill="#78350f"/>
+    <!-- Steam Swirls -->
+    <path d="M 197 290 Q 200 280 196 275" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 203 290 Q 206 280 202 275" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Steam Wand -->
+    <path d="M 260 240 L 270 290" fill="none" stroke="url(#chromeGrad)" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Drip Tray Grid Base -->
+    <rect x="110" y="325" width="180" height="25" rx="4" fill="#334155"/>
+    <rect x="115" y="325" width="170" height="5" fill="#1e293b"/>
+    <line x1="125" y1="327" x2="275" y2="327" stroke="#64748b" stroke-dasharray="4 2" stroke-width="2"/>
+  </g>
+</svg>

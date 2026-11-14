@@ -49,3 +49,4 @@ class LoginPage(BasePage):
 
     def logout(self):
         self.click(self.NAV_LOGOUT_BTN)
+

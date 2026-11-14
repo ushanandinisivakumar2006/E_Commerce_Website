@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="jeansBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0f9ff"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </radialGradient>
+    <linearGradient id="denimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="50%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+    <filter id="denimShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="20" fill="url(#jeansBg)"/>
+
+  <!-- Denim Trouser Outline -->
+  <g filter="url(#denimShadow)">
+    <path d="M 130 75 L 270 75 L 265 140 L 255 350 L 210 350 L 200 170 L 190 350 L 145 350 L 135 140 Z" fill="url(#denimGrad)"/>
+    
+    <!-- Waistband & Belt Loops -->
+    <rect x="130" y="75" width="140" height="18" fill="#1e3a8a" stroke="#ca8a04" stroke-width="1.5"/>
+    <rect x="150" y="73" width="7" height="22" rx="1.5" fill="#172554"/>
+    <rect x="196" y="73" width="7" height="22" rx="1.5" fill="#172554"/>
+    <rect x="243" y="73" width="7" height="22" rx="1.5" fill="#172554"/>
+
+    <!-- Brass Waist Button -->
+    <circle cx="200" cy="84" r="5" fill="#eab308" stroke="#a16207" stroke-width="1"/>
+
+    <!-- Fly Seam & Rivets -->
+    <path d="M 200 93 L 200 135 Q 200 150 185 155" fill="none" stroke="#eab308" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Left & Right Curved Pockets -->
+    <path d="M 133 93 Q 155 93 165 115 L 160 135" fill="none" stroke="#eab308" stroke-width="2"/>
+    <circle cx="165" cy="115" r="2.5" fill="#ca8a04"/>
+
+    <path d="M 267 93 Q 245 93 235 115 L 240 135" fill="none" stroke="#eab308" stroke-width="2"/>
+    <circle cx="235" cy="115" r="2.5" fill="#ca8a04"/>
+
+    <!-- Contrast Leg Seams -->
+    <line x1="172" y1="165" x2="175" y2="350" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+    <line x1="228" y1="165" x2="225" y2="350" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+    
+    <!-- Bottom Hem Folds -->
+    <rect x="145" y="344" width="45" height="6" fill="#172554" stroke="#eab308" stroke-width="1.2"/>
+    <rect x="210" y="344" width="45" height="6" fill="#172554" stroke="#eab308" stroke-width="1.2"/>
+  </g>
+</svg>

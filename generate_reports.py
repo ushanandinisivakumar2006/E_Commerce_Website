@@ -423,3 +423,4 @@ if __name__ == "__main__":
     generate_markdown_report(c_path)
     generate_pdf_report(c_path)
     print("Reports generation complete!")
+

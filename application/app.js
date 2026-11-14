@@ -18,7 +18,7 @@ const PRODUCTS_DATA = [
     reviews: 142,
     stock: 25,
     description: "Industry-leading noise canceling over-ear wireless headphones with 40-hour battery life, high-res audio drivers, and ultra-comfortable memory foam ear cushions.",
-    image: createProductSVG("%23dbeafe", "🎧", "Quantum Pro")
+    image: "images/headphones.svg"
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const PRODUCTS_DATA = [
     reviews: 89,
     stock: 12,
     description: "Sleek aluminum chassis laptop powered by a 12-core processor, 16GB RAM, 512GB NVMe SSD, and a stunning 4K OLED display for professionals and creators.",
-    image: createProductSVG("%23ede9fe", "💻", "UltraBook 15")
+    image: "images/laptop.svg"
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const PRODUCTS_DATA = [
     reviews: 215,
     stock: 30,
     description: "Waterproof smartwatch equipped with continuous heart-rate tracking, SpO2 sensor, sleep staging, built-in GPS, and 7-day battery life.",
-    image: createProductSVG("%23e0e7ff", "⌚", "SmartFit Watch")
+    image: "images/smartwatch.svg"
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const PRODUCTS_DATA = [
     reviews: 78,
     stock: 18,
     description: "Ultra HD 4K/60fps waterproof action camera with HyperSmooth video stabilization, dual touchscreen displays, and voice command support.",
-    image: createProductSVG("%23ccfbf1", "📷", "4K Action Cam")
+    image: "images/camera.svg"
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ const PRODUCTS_DATA = [
     reviews: 310,
     stock: 80,
     description: "100% premium combed organic cotton crewneck tee. Pre-shrunk, breathable, ultra-soft hand feel, ideal for everyday casual wear.",
-    image: createProductSVG("%23fee2e2", "👕", "Cotton Tee")
+    image: "images/tshirt.svg"
   },
   {
     id: 6,
@@ -73,7 +73,7 @@ const PRODUCTS_DATA = [
     reviews: 164,
     stock: 45,
     description: "Tailored slim-fit denim jeans crafted with 2% elastane for maximum comfort and flexibility. Classic five-pocket styling and antique brass hardware.",
-    image: createProductSVG("%23e0f2fe", "👖", "Stretch Denim")
+    image: "images/jeans.svg"
   },
   {
     id: 7,
@@ -84,7 +84,7 @@ const PRODUCTS_DATA = [
     reviews: 95,
     stock: 22,
     description: "Thermal insulated full-zip fleece jacket with wind-resistant collar, zippered chest pocket, and elasticized cuffs for cold weather outdoor adventures.",
-    image: createProductSVG("%23fef3c7", "🧥", "Fleece Jacket")
+    image: "images/jacket.svg"
   },
   {
     id: 8,
@@ -95,7 +95,7 @@ const PRODUCTS_DATA = [
     reviews: 520,
     stock: 50,
     description: "A handbook of agile software craftsmanship. Master design patterns, unit testing, refactoring, and clean architecture principles for modern development.",
-    image: createProductSVG("%23fef08a", "📘", "Clean Code")
+    image: "images/clean_code.svg"
   },
   {
     id: 9,
@@ -106,7 +106,7 @@ const PRODUCTS_DATA = [
     reviews: 180,
     stock: 35,
     description: "Practical guide covering Page Object Model, test reporting, continuous integration, and best practices for automated web application testing.",
-    image: createProductSVG("%23dcfce7", "📗", "Selenium Guide")
+    image: "images/selenium_book.svg"
   },
   {
     id: 10,
@@ -117,7 +117,7 @@ const PRODUCTS_DATA = [
     reviews: 112,
     stock: 14,
     description: "15-bar Italian pump stainless steel espresso maker with commercial steam wand for barista-style silky microfoam lattes and cappuccinos.",
-    image: createProductSVG("%23ffedd5", "☕", "Espresso Maker")
+    image: "images/coffee_maker.svg"
   },
   {
     id: 11,
@@ -128,7 +128,7 @@ const PRODUCTS_DATA = [
     reviews: 84,
     stock: 20,
     description: "H13 True HEPA filter capturing 99.97% of airborne allergens, pollen, dust, and smoke. Whisper-quiet night mode and real-time PM2.5 display.",
-    image: createProductSVG("%23f1f5f9", "🍃", "Air Purifier")
+    image: "images/air_purifier.svg"
   },
   {
     id: 12,
@@ -139,7 +139,7 @@ const PRODUCTS_DATA = [
     reviews: 204,
     stock: 28,
     description: "Enameled cast iron Dutch oven with tight-fitting lid and heat-resistant stainless steel knob. Superior heat retention for baking, braising, and stews.",
-    image: createProductSVG("%23fecaca", "🍲", "Dutch Oven")
+    image: "images/dutch_oven.svg"
   }
 ];
 
@@ -286,6 +286,11 @@ function loadStoredData() {
   if (storedCart) {
     try {
       AppState.cart = JSON.parse(storedCart);
+      // Sync stored cart image paths with current product images
+      AppState.cart.forEach(item => {
+        const p = PRODUCTS_DATA.find(prod => prod.id === item.productId);
+        if (p) item.image = p.image;
+      });
     } catch (e) {
       console.warn("Could not parse stored cart", e);
     }
@@ -1098,3 +1103,4 @@ function setupEventListeners() {
 
 // Start application when DOM is ready
 document.addEventListener("DOMContentLoaded", initApp);
+

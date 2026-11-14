@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="airBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </radialGradient>
+    <linearGradient id="towerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="35%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <filter id="airShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="20" fill="url(#airBg)"/>
+
+  <!-- Tower Body -->
+  <g filter="url(#airShadow)">
+    <!-- Main Cylinder -->
+    <rect x="140" y="90" width="120" height="240" rx="20" fill="url(#towerGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+    <!-- Top Cap -->
+    <ellipse cx="200" cy="90" rx="60" ry="14" fill="#0f172a"/>
+    <ellipse cx="200" cy="90" rx="52" ry="10" fill="#1e293b"/>
+    <!-- Glowing Air Quality Ring (Blue = Clean) -->
+    <ellipse cx="200" cy="90" rx="42" ry="8" fill="none" stroke="#38bdf8" stroke-width="3"/>
+
+    <!-- OLED Status Display on Front -->
+    <circle cx="200" cy="140" r="22" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="200" cy="140" r="20" fill="none" stroke="#22c55e" stroke-width="2"/>
+    <text x="200" y="138" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">008</text>
+    <text x="200" y="148" font-family="sans-serif" font-size="6" font-weight="bold" fill="#4ade80" text-anchor="middle">PM2.5</text>
+
+    <!-- Perforated Intake Mesh -->
+    <g fill="#94a3b8" opacity="0.6">
+      <circle cx="160" cy="200" r="1.5"/><circle cx="170" cy="200" r="1.5"/><circle cx="180" cy="200" r="1.5"/><circle cx="190" cy="200" r="1.5"/><circle cx="200" cy="200" r="1.5"/><circle cx="210" cy="200" r="1.5"/><circle cx="220" cy="200" r="1.5"/><circle cx="230" cy="200" r="1.5"/><circle cx="240" cy="200" r="1.5"/>
+      <circle cx="155" cy="210" r="1.5"/><circle cx="165" cy="210" r="1.5"/><circle cx="175" cy="210" r="1.5"/><circle cx="185" cy="210" r="1.5"/><circle cx="195" cy="210" r="1.5"/><circle cx="205" cy="210" r="1.5"/><circle cx="215" cy="210" r="1.5"/><circle cx="225" cy="210" r="1.5"/><circle cx="235" cy="210" r="1.5"/><circle cx="245" cy="210" r="1.5"/>
+      <circle cx="160" cy="220" r="1.5"/><circle cx="170" cy="220" r="1.5"/><circle cx="180" cy="220" r="1.5"/><circle cx="190" cy="220" r="1.5"/><circle cx="200" cy="220" r="1.5"/><circle cx="210" cy="220" r="1.5"/><circle cx="220" cy="220" r="1.5"/><circle cx="230" cy="220" r="1.5"/><circle cx="240" cy="220" r="1.5"/>
+      <circle cx="155" cy="230" r="1.5"/><circle cx="165" cy="230" r="1.5"/><circle cx="175" cy="230" r="1.5"/><circle cx="185" cy="230" r="1.5"/><circle cx="195" cy="230" r="1.5"/><circle cx="205" cy="230" r="1.5"/><circle cx="215" cy="230" r="1.5"/><circle cx="225" cy="230" r="1.5"/><circle cx="235" cy="230" r="1.5"/><circle cx="245" cy="230" r="1.5"/>
+      <circle cx="160" cy="240" r="1.5"/><circle cx="170" cy="240" r="1.5"/><circle cx="180" cy="240" r="1.5"/><circle cx="190" cy="240" r="1.5"/><circle cx="200" cy="240" r="1.5"/><circle cx="210" cy="240" r="1.5"/><circle cx="220" cy="240" r="1.5"/><circle cx="230" cy="240" r="1.5"/><circle cx="240" cy="240" r="1.5"/>
+      <circle cx="155" cy="250" r="1.5"/><circle cx="165" cy="250" r="1.5"/><circle cx="175" cy="250" r="1.5"/><circle cx="185" cy="250" r="1.5"/><circle cx="195" cy="250" r="1.5"/><circle cx="205" cy="250" r="1.5"/><circle cx="215" cy="250" r="1.5"/><circle cx="225" cy="250" r="1.5"/><circle cx="235" cy="250" r="1.5"/><circle cx="245" cy="250" r="1.5"/>
+      <circle cx="160" cy="260" r="1.5"/><circle cx="170" cy="260" r="1.5"/><circle cx="180" cy="260" r="1.5"/><circle cx="190" cy="260" r="1.5"/><circle cx="200" cy="260" r="1.5"/><circle cx="210" cy="260" r="1.5"/><circle cx="220" cy="260" r="1.5"/><circle cx="230" cy="260" r="1.5"/><circle cx="240" cy="260" r="1.5"/>
+      <circle cx="155" cy="270" r="1.5"/><circle cx="165" cy="270" r="1.5"/><circle cx="175" cy="270" r="1.5"/><circle cx="185" cy="270" r="1.5"/><circle cx="195" cy="270" r="1.5"/><circle cx="205" cy="270" r="1.5"/><circle cx="215" cy="270" r="1.5"/><circle cx="225" cy="270" r="1.5"/><circle cx="235" cy="270" r="1.5"/><circle cx="245" cy="270" r="1.5"/>
+      <circle cx="160" cy="280" r="1.5"/><circle cx="170" cy="280" r="1.5"/><circle cx="180" cy="280" r="1.5"/><circle cx="190" cy="280" r="1.5"/><circle cx="200" cy="280" r="1.5"/><circle cx="210" cy="280" r="1.5"/><circle cx="220" cy="280" r="1.5"/><circle cx="230" cy="280" r="1.5"/><circle cx="240" cy="280" r="1.5"/>
+    </g>
+
+    <!-- Clean Air Flow Arrows -->
+    <path d="M 130 80 Q 150 40 165 60" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+    <path d="M 270 80 Q 250 40 235 60" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  </g>
+</svg>

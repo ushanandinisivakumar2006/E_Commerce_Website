@@ -43,3 +43,4 @@ class RegisterPage(BasePage):
 
     def get_password_error(self):
         return self.get_text(self.PASSWORD_ERROR)
+

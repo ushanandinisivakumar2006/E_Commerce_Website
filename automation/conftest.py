@@ -59,3 +59,4 @@ def pytest_runtest_makereport(item, call):
                 report.extras = extras
             except Exception:
                 pass
+

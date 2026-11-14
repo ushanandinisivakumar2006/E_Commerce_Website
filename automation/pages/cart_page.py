@@ -63,3 +63,4 @@ class CartPage(BasePage):
 
     def is_cart_empty(self):
         return self.is_visible(self.CART_EMPTY_STATE, timeout=3)
+

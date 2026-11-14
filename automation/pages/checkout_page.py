@@ -75,3 +75,4 @@ class CheckoutPage(BasePage):
 
     def continue_shopping(self):
         self.click(self.CONF_CONTINUE_BTN)
+

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="laptopBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5f3ff"/>
+      <stop offset="100%" stop-color="#ede9fe"/>
+    </radialGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="40%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="chassisGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="20" fill="url(#laptopBg)"/>
+
+  <!-- Screen Lid Assembly -->
+  <g filter="url(#dropShadow)">
+    <!-- Outer Bezel -->
+    <rect x="70" y="80" width="260" height="175" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <!-- Display Panel -->
+    <rect x="80" y="90" width="240" height="155" rx="4" fill="url(#screenGrad)"/>
+    
+    <!-- Screen Content: Code / Data Waves Graphic -->
+    <path d="M 85 200 Q 140 130 200 170 T 315 130 L 315 240 L 85 240 Z" fill="#6366f1" opacity="0.35"/>
+    <path d="M 85 215 Q 150 160 220 190 T 315 160 L 315 240 L 85 240 Z" fill="#38bdf8" opacity="0.4"/>
+    
+    <!-- Code Lines Mockup -->
+    <rect x="95" y="105" width="55" height="5" rx="2.5" fill="#38bdf8"/>
+    <rect x="155" y="105" width="30" height="5" rx="2.5" fill="#f43f5e"/>
+    <rect x="105" y="118" width="80" height="4" rx="2" fill="#cbd5e1" opacity="0.6"/>
+    <rect x="105" y="128" width="60" height="4" rx="2" fill="#cbd5e1" opacity="0.6"/>
+
+    <!-- Webcam & Sensor -->
+    <circle cx="200" cy="85" r="2.5" fill="#0f172a"/>
+    <circle cx="200" cy="85" r="1" fill="#38bdf8"/>
+  </g>
+
+  <!-- Laptop Base Chassis -->
+  <g filter="url(#dropShadow)">
+    <!-- Main Lower Deck -->
+    <path d="M 40 255 L 70 255 L 330 255 L 360 255 L 345 285 L 55 285 Z" fill="url(#chassisGrad)"/>
+    <rect x="40" y="254" width="320" height="3" fill="#cbd5e1"/>
+    
+    <!-- Keyboard Wells & Trackpad -->
+    <rect x="95" y="258" width="210" height="12" rx="2" fill="#1e293b" opacity="0.85"/>
+    <!-- Individual Key Visuals -->
+    <line x1="105" y1="264" x2="295" y2="264" stroke="#475569" stroke-dasharray="8 3" stroke-width="3"/>
+    
+    <!-- Trackpad -->
+    <rect x="170" y="272" width="60" height="10" rx="2" fill="#94a3b8" stroke="#64748b" stroke-width="0.8"/>
+    <!-- Front Lip Notch -->
+    <rect x="185" y="284" width="30" height="2" rx="1" fill="#475569"/>
+  </g>
+</svg>

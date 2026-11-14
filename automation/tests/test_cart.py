@@ -66,3 +66,4 @@ class TestCart:
         
         assert cart_page.is_cart_empty(), "Cart should display empty state after clearing."
         assert cart_page.get_badge_count() == 0
+

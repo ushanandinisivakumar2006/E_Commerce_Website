@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="ovenBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff1f2"/>
+      <stop offset="100%" stop-color="#fecaca"/>
+    </radialGradient>
+    <radialGradient id="enamelGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="50%" stop-color="#e11d48"/>
+      <stop offset="85%" stop-color="#be123c"/>
+      <stop offset="100%" stop-color="#881337"/>
+    </radialGradient>
+    <linearGradient id="lidKnob" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="ovenShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="20" fill="url(#ovenBg)"/>
+
+  <!-- Dutch Oven Assembly -->
+  <g filter="url(#ovenShadow)">
+    <!-- Side Handles -->
+    <path d="M 75 190 C 60 190 60 220 75 220 L 95 220 L 95 190 Z" fill="#881337" stroke="#4c0519" stroke-width="2"/>
+    <path d="M 325 190 C 340 190 340 220 325 220 L 305 220 L 305 190 Z" fill="#881337" stroke="#4c0519" stroke-width="2"/>
+
+    <!-- Pot Base -->
+    <path d="M 90 185 C 90 280 120 310 200 310 C 280 310 310 280 310 185 Z" fill="url(#enamelGrad)" stroke="#9f1239" stroke-width="2"/>
+    <!-- Specular Highlight on Pot -->
+    <path d="M 115 200 C 115 260 135 285 180 295" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- Lid Rim -->
+    <ellipse cx="200" cy="180" rx="112" ry="16" fill="#be123c" stroke="#881337" stroke-width="2"/>
+
+    <!-- Domed Lid -->
+    <path d="M 90 180 C 90 135 140 125 200 125 C 260 125 310 135 310 180 Z" fill="url(#enamelGrad)" stroke="#9f1239" stroke-width="1.5"/>
+    <ellipse cx="200" cy="155" rx="75" ry="8" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.35"/>
+
+    <!-- Stainless Steel Knob Base & Handle -->
+    <rect x="194" y="112" width="12" height="15" fill="#475569"/>
+    <ellipse cx="200" cy="112" rx="18" ry="7" fill="url(#lidKnob)" stroke="#334155" stroke-width="1.5"/>
+  </g>
+</svg>

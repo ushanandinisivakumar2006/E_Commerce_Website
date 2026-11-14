@@ -95,3 +95,4 @@ class TestCheckout:
         
         # Verify cart badge reset
         assert cart_page.get_badge_count() == 0, "Cart badge was not reset after order placement."
+

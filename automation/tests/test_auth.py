@@ -56,3 +56,4 @@ class TestAuthentication:
         
         login_page.logout()
         assert not login_page.is_logged_in(), "User should be logged out after clicking Logout."
+
