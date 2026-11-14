@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenithMart - Modern E-Commerce Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <span>🚀 QA Testing Demo Store &mdash; Practice E-Commerce Application</span>
+      <span class="top-bar-info">Default Test Account: <strong>testuser@example.com</strong> / <strong>Password123!</strong></span>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="nav-brand">
+        <a href="#" id="brand-logo" data-testid="brand-logo">
+          <span class="brand-icon">🛒</span>
+          <span class="brand-name">Zenith<span class="brand-accent">Mart</span></span>
+        </a>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-section">
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="search-input" 
+            data-testid="search-input" 
+            placeholder="Search products by title, category, keyword..."
+          >
+          <button id="search-btn" data-testid="search-btn" title="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <button id="clear-search-btn" data-testid="clear-search-btn" class="clear-btn" title="Clear Search" style="display:none;">&times;</button>
+        </div>
+      </div>
+
+      <!-- Navigation Actions -->
+      <div class="nav-actions">
+        <!-- Auth Links -->
+        <div id="auth-guest" class="auth-group">
+          <button id="nav-login-btn" data-testid="nav-login-btn" class="btn btn-outline">Login</button>
+          <button id="nav-register-btn" data-testid="nav-register-btn" class="btn btn-primary">Register</button>
+        </div>
+        <div id="auth-user" class="auth-group" style="display: none;">
+          <div class="user-profile">
+            <span class="user-avatar" id="user-avatar">TU</span>
+            <span class="user-greeting" id="user-greeting" data-testid="user-greeting">Hi, Test User</span>
+          </div>
+          <button id="nav-logout-btn" data-testid="nav-logout-btn" class="btn btn-outline btn-sm">Logout</button>
+        </div>
+
+        <!-- Cart Button -->
+        <button id="cart-toggle-btn" data-testid="cart-toggle-btn" class="cart-btn" aria-label="Open Shopping Cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-label">Cart</span>
+          <span id="cart-badge" data-testid="cart-badge" class="badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="container main-layout">
+    <!-- Sidebar Filters -->
+    <aside class="sidebar-filters">
+      <div class="filter-header">
+        <h3>Filters</h3>
+        <button id="reset-filters-btn" data-testid="reset-filters-btn" class="btn-text">Reset All</button>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="filter-group">
+        <label class="filter-title">Category</label>
+        <div class="category-options" id="category-filters">
+          <label class="radio-label">
+            <input type="radio" name="category" value="all" checked data-testid="filter-cat-all">
+            <span>All Categories</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category" value="Electronics" data-testid="filter-cat-electronics">
+            <span>Electronics</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category" value="Apparel" data-testid="filter-cat-apparel">
+            <span>Apparel</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category" value="Books" data-testid="filter-cat-books">
+            <span>Books</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category" value="Home & Kitchen" data-testid="filter-cat-home">
+            <span>Home &amp; Kitchen</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Price Range Filter -->
+      <div class="filter-group">
+        <div class="price-header">
+          <label class="filter-title">Max Price</label>
+          <span id="price-display" data-testid="price-display">$1500</span>
+        </div>
+        <input 
+          type="range" 
+          id="price-range" 
+          data-testid="price-range" 
+          min="10" 
+          max="1500" 
+          step="10" 
+          value="1500"
+        >
+        <div class="price-range-limits">
+          <span>$10</span>
+          <span>$1500</span>
+        </div>
+      </div>
+
+      <!-- Quick Info / Help -->
+      <div class="filter-info-box">
+        <h4>QA Quick Tips</h4>
+        <p>Use the search and filter controls to isolate items. Check boundary values on prices, cart quantity inputs, and checkout forms.</p>
+      </div>
+    </aside>
+
+    <!-- Products Section -->
+    <section class="products-section">
+      <div class="products-header">
+        <div>
+          <h2 id="catalog-title">Product Catalog</h2>
+          <p id="products-count-msg" data-testid="products-count-msg">Showing 12 of 12 products</p>
+        </div>
+        <div class="sort-wrapper">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select" data-testid="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to High</option>
+            <option value="rating">Customer Rating</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div id="products-grid" data-testid="products-grid" class="products-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="no-products-msg" data-testid="no-products-msg" class="empty-state" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3>No matching products found</h3>
+        <p>Try clearing filters or searching with different keywords.</p>
+        <button id="clear-search-empty-btn" class="btn btn-outline">Clear Filters</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Details Modal -->
+  <div id="product-detail-modal" data-testid="product-detail-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card modal-lg">
+      <button class="modal-close-btn" id="close-detail-modal-btn" data-testid="close-detail-modal-btn">&times;</button>
+      <div class="detail-content" id="detail-modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping Cart Drawer / Modal -->
+  <div id="cart-drawer" data-testid="cart-drawer" class="modal-backdrop" style="display: none;">
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h3>Shopping Cart (<span id="cart-drawer-count">0</span>)</h3>
+        <button id="close-cart-btn" data-testid="close-cart-btn" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="cart-body" id="cart-items-container" data-testid="cart-items-container">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="cart-footer" id="cart-footer">
+        <div class="cart-summary-line">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal" data-testid="cart-subtotal">$0.00</span>
+        </div>
+        <div class="cart-summary-line">
+          <span>Estimated Tax (8%):</span>
+          <span id="cart-tax" data-testid="cart-tax">$0.00</span>
+        </div>
+        <div class="cart-summary-line total-line">
+          <span>Order Total:</span>
+          <span id="cart-total" data-testid="cart-total">$0.00</span>
+        </div>
+        <div class="cart-actions">
+          <button id="clear-cart-btn" data-testid="clear-cart-btn" class="btn btn-outline btn-block">Clear Cart</button>
+          <button id="proceed-checkout-btn" data-testid="proceed-checkout-btn" class="btn btn-primary btn-block">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="login-modal" data-testid="login-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card modal-sm">
+      <button class="modal-close-btn" id="close-login-modal-btn" data-testid="close-login-modal-btn">&times;</button>
+      <div class="modal-header">
+        <h2>Sign In</h2>
+        <p>Access your ZenithMart demo account</p>
+      </div>
+
+      <div id="login-alert" data-testid="login-alert" class="alert alert-danger" style="display: none;"></div>
+
+      <form id="login-form" data-testid="login-form" novalidate>
+        <div class="form-group">
+          <label for="login-email">Email Address <span class="required">*</span></label>
+          <input 
+            type="email" 
+            id="login-email" 
+            data-testid="login-email" 
+            placeholder="e.g. testuser@example.com"
+          >
+          <span class="field-error" id="login-email-error" data-testid="login-email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password <span class="required">*</span></label>
+          <input 
+            type="password" 
+            id="login-password" 
+            data-testid="login-password" 
+            placeholder="••••••••"
+          >
+          <span class="field-error" id="login-password-error" data-testid="login-password-error"></span>
+        </div>
+
+        <button type="submit" id="login-submit-btn" data-testid="login-submit-btn" class="btn btn-primary btn-block">
+          Login
+        </button>
+      </form>
+
+      <div class="modal-footer-text">
+        <span>Don't have an account? </span>
+        <button id="switch-to-register-btn" data-testid="switch-to-register-btn" class="link-btn">Create one</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration Modal -->
+  <div id="register-modal" data-testid="register-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card modal-sm">
+      <button class="modal-close-btn" id="close-register-modal-btn" data-testid="close-register-modal-btn">&times;</button>
+      <div class="modal-header">
+        <h2>Create Account</h2>
+        <p>Register as a new demo shopper</p>
+      </div>
+
+      <div id="register-alert" data-testid="register-alert" class="alert alert-danger" style="display: none;"></div>
+
+      <form id="register-form" data-testid="register-form" novalidate>
+        <div class="form-group">
+          <label for="reg-name">Full Name <span class="required">*</span></label>
+          <input 
+            type="text" 
+            id="reg-name" 
+            data-testid="reg-name" 
+            placeholder="e.g. Alex Johnson"
+          >
+          <span class="field-error" id="reg-name-error" data-testid="reg-name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-email">Email Address <span class="required">*</span></label>
+          <input 
+            type="email" 
+            id="reg-email" 
+            data-testid="reg-email" 
+            placeholder="e.g. alex@example.com"
+          >
+          <span class="field-error" id="reg-email-error" data-testid="reg-email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-password">Password (min 6 characters) <span class="required">*</span></label>
+          <input 
+            type="password" 
+            id="reg-password" 
+            data-testid="reg-password" 
+            placeholder="••••••••"
+          >
+          <span class="field-error" id="reg-password-error" data-testid="reg-password-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-confirm-password">Confirm Password <span class="required">*</span></label>
+          <input 
+            type="password" 
+            id="reg-confirm-password" 
+            data-testid="reg-confirm-password" 
+            placeholder="••••••••"
+          >
+          <span class="field-error" id="reg-confirm-password-error" data-testid="reg-confirm-password-error"></span>
+        </div>
+
+        <button type="submit" id="register-submit-btn" data-testid="register-submit-btn" class="btn btn-primary btn-block">
+          Create Account
+        </button>
+      </form>
+
+      <div class="modal-footer-text">
+        <span>Already have an account? </span>
+        <button id="switch-to-login-btn" data-testid="switch-to-login-btn" class="link-btn">Sign in</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" data-testid="checkout-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card modal-md">
+      <button class="modal-close-btn" id="close-checkout-modal-btn" data-testid="close-checkout-modal-btn">&times;</button>
+      <div class="modal-header">
+        <h2>Secure Checkout</h2>
+        <p>Complete your shipping and mock payment details</p>
+      </div>
+
+      <div id="checkout-alert" data-testid="checkout-alert" class="alert alert-danger" style="display: none;"></div>
+
+      <form id="checkout-form" data-testid="checkout-form" novalidate>
+        <!-- Shipping Info -->
+        <fieldset class="form-section">
+          <legend>Shipping Information</legend>
+          
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="chk-name">Full Name <span class="required">*</span></label>
+              <input type="text" id="chk-name" data-testid="chk-name" placeholder="John Doe">
+              <span class="field-error" id="chk-name-error" data-testid="chk-name-error"></span>
+            </div>
+            <div class="form-group col-6">
+              <label for="chk-email">Email Address <span class="required">*</span></label>
+              <input type="email" id="chk-email" data-testid="chk-email" placeholder="john@example.com">
+              <span class="field-error" id="chk-email-error" data-testid="chk-email-error"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="chk-address">Street Address <span class="required">*</span></label>
+            <input type="text" id="chk-address" data-testid="chk-address" placeholder="123 Innovation Blvd">
+            <span class="field-error" id="chk-address-error" data-testid="chk-address-error"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-4">
+              <label for="chk-city">City <span class="required">*</span></label>
+              <input type="text" id="chk-city" data-testid="chk-city" placeholder="Seattle">
+              <span class="field-error" id="chk-city-error" data-testid="chk-city-error"></span>
+            </div>
+            <div class="form-group col-4">
+              <label for="chk-state">State / Province <span class="required">*</span></label>
+              <input type="text" id="chk-state" data-testid="chk-state" placeholder="WA">
+              <span class="field-error" id="chk-state-error" data-testid="chk-state-error"></span>
+            </div>
+            <div class="form-group col-4">
+              <label for="chk-zip">ZIP / Postal Code <span class="required">*</span></label>
+              <input type="text" id="chk-zip" data-testid="chk-zip" placeholder="98101">
+              <span class="field-error" id="chk-zip-error" data-testid="chk-zip-error"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Payment Info (Mock) -->
+        <fieldset class="form-section">
+          <legend>Mock Payment Method</legend>
+          <div class="payment-methods">
+            <label class="radio-label">
+              <input type="radio" name="payment-method" value="credit" checked data-testid="pay-credit">
+              <span>Credit / Debit Card (Mock)</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="payment-method" value="cod" data-testid="pay-cod">
+              <span>Cash on Delivery</span>
+            </label>
+          </div>
+
+          <div id="card-fields-group">
+            <div class="form-group">
+              <label for="chk-card-number">Card Number <span class="required">*</span></label>
+              <input type="text" id="chk-card-number" data-testid="chk-card-number" placeholder="4532 •••• •••• 8890" maxlength="19">
+              <span class="field-error" id="chk-card-number-error" data-testid="chk-card-number-error"></span>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="chk-card-exp">Expiry (MM/YY) <span class="required">*</span></label>
+                <input type="text" id="chk-card-exp" data-testid="chk-card-exp" placeholder="12/28" maxlength="5">
+                <span class="field-error" id="chk-card-exp-error" data-testid="chk-card-exp-error"></span>
+              </div>
+              <div class="form-group col-6">
+                <label for="chk-card-cvv">CVV <span class="required">*</span></label>
+                <input type="password" id="chk-card-cvv" data-testid="chk-card-cvv" placeholder="123" maxlength="4">
+                <span class="field-error" id="chk-card-cvv-error" data-testid="chk-card-cvv-error"></span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Summary & Place Order -->
+        <div class="checkout-summary-box">
+          <div class="checkout-line">
+            <span>Total Payable:</span>
+            <strong id="chk-total-payable" data-testid="chk-total-payable">$0.00</strong>
+          </div>
+        </div>
+
+        <button type="submit" id="place-order-btn" data-testid="place-order-btn" class="btn btn-success btn-block btn-lg">
+          Place Order &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div id="confirmation-modal" data-testid="confirmation-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card modal-md">
+      <div class="order-success-header">
+        <div class="success-icon">✓</div>
+        <h2>Order Confirmed!</h2>
+        <p>Thank you for testing ZenithMart. Your order has been placed successfully.</p>
+      </div>
+
+      <div class="order-details-card">
+        <div class="order-id-badge">
+          Order ID: <strong id="conf-order-id" data-testid="conf-order-id">ORD-000000</strong>
+        </div>
+        <div class="conf-info-grid">
+          <div>
+            <span class="conf-label">Recipient:</span>
+            <span id="conf-name" data-testid="conf-name">John Doe</span>
+          </div>
+          <div>
+            <span class="conf-label">Email:</span>
+            <span id="conf-email" data-testid="conf-email">john@example.com</span>
+          </div>
+          <div>
+            <span class="conf-label">Shipping Address:</span>
+            <span id="conf-address" data-testid="conf-address">123 Main St, City, ST 12345</span>
+          </div>
+          <div>
+            <span class="conf-label">Payment Method:</span>
+            <span id="conf-payment" data-testid="conf-payment">Credit Card (Mock)</span>
+          </div>
+        </div>
+
+        <div class="conf-items-section">
+          <h4>Items Ordered:</h4>
+          <div id="conf-items-list" data-testid="conf-items-list" class="conf-items-list">
+            <!-- Injected via JavaScript -->
+          </div>
+          <div class="conf-total-row">
+            <span>Total Amount Paid:</span>
+            <strong id="conf-total" data-testid="conf-total">$0.00</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirmation-actions">
+        <button id="conf-continue-shopping-btn" data-testid="conf-continue-shopping-btn" class="btn btn-primary btn-block">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 ZenithMart E-Commerce QA Testing Project. Designed for Manual Testing &amp; Selenium Test Automation.</p>
+      <p class="footer-links">Built for Final-Year Portfolio &amp; QA Engineer Demonstrations.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

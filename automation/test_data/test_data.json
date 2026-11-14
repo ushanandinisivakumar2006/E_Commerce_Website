@@ -1,0 +1,53 @@
+{
+  "users": {
+    "valid_user": {
+      "name": "Test User",
+      "email": "testuser@example.com",
+      "password": "Password123!"
+    },
+    "invalid_password_user": {
+      "email": "testuser@example.com",
+      "password": "WrongPassword999!"
+    },
+    "non_existent_user": {
+      "email": "notregistered@example.com",
+      "password": "Password123!"
+    },
+    "new_registration": {
+      "name": "Samantha Reed",
+      "email": "samantha.reed@example.com",
+      "password": "SecurePassword2026!",
+      "confirm_password": "SecurePassword2026!"
+    }
+  },
+  "search": {
+    "valid_term": "Laptop",
+    "expected_product_id": 2,
+    "case_insensitive_term": "headphones",
+    "invalid_term": "NonExistentHoverboard"
+  },
+  "categories": {
+    "electronics": "Electronics",
+    "apparel": "Apparel",
+    "books": "Books",
+    "home": "Home & Kitchen"
+  },
+  "checkout": {
+    "valid_shipping": {
+      "name": "David Miller",
+      "email": "david.miller@example.com",
+      "address": "456 Market St, Suite 200",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94105"
+    },
+    "invalid_shipping": {
+      "name": "",
+      "email": "invalid-email-string",
+      "address": "",
+      "city": "",
+      "state": "",
+      "zip": ""
+    }
+  }
+}
